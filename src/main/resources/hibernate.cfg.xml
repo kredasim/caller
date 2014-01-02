@@ -18,13 +18,14 @@
 
         <!-- Echo all executed SQL to stdout -->
         <property name="show_sql">true</property>
-
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">create</property>
         <!-- <property name="hibernate.hbm2ddl.import_files">import.sql</property> -->
 <!--         <property name="connection.autocommit">true</property> -->
         
-<!--         <mapping class="com.doli.model.User" /> -->
+        <mapping class="com.caller.model.User" />
+        <mapping class="com.caller.model.Call" />
+        
     </session-factory>
 
 </hibernate-configuration>
