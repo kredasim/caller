@@ -38,7 +38,7 @@ public class CallController {
 	 */
 	private Response prepareCallResponse(Call call) {
 		Response response = new Response();
-		response.setDial(call.getToNumber());
+//		response.setDial(call.getToNumber());
 		response.setSay(call.getMessageText());
 		return response;
 	}
