@@ -20,6 +20,7 @@ public class Call extends AbstractEntity<Long> {
 	
 	private String fromNumber;
 	private String toNumber;
+	private String securityToken;
 	
 //	@OneToOne(fetch = FetchType.EAGER)
 //	@PrimaryKeyJoinColumn
@@ -67,6 +68,14 @@ public class Call extends AbstractEntity<Long> {
 	 */
 	public void setMessageText(String messageText) {
 		this.messageText = messageText;
+	}
+
+	public String getSecurityToken() {
+		return securityToken;
+	}
+
+	public void setSecurityToken(String securityToken) {
+		this.securityToken = securityToken;
 	}
 	
 	

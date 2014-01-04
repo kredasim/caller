@@ -5,6 +5,7 @@ package com.caller.service;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,8 @@ public class CallServiceImpl implements CallService {
 	@Autowired
 	private CallDao callDao;
 	
+	private static final int SECURITY_TOKEN_TIMESTAMP_RANGE = 2000000;
+	
 	/**
 	 * {@inheritDoc}
 	 */
@@ -43,7 +46,7 @@ public class CallServiceImpl implements CallService {
 		call.setToNumber(number);
 //		call.setOriginator(user);
 		call.setMessageText(text);
-		
+		call.setSecurityToken(prepareSecurityToken());
 		callDao.save(call);
 		
 		/* Instantiate a new Twilio Rest Client */
@@ -58,7 +61,8 @@ public class CallServiceImpl implements CallService {
         params.put("From", call.getFromNumber());
         params.put("To", call.getToNumber());
         StringBuilder url = 
-        		new StringBuilder("http://caller-simeonkredatus.rhcloud.com/call/").append(call.getId());
+        		new StringBuilder("http://caller-simeonkredatus.rhcloud.com/call/").append(call.getId())
+        		.append("/").append(call.getSecurityToken());
         params.put("Url", url.toString());
  
         try {
@@ -67,6 +71,16 @@ public class CallServiceImpl implements CallService {
         } catch (TwilioRestException e) {
             e.printStackTrace();
         }
+	}
+	
+	/**
+	 * Prepare security token for this call - generates random number and converts it
+	 * into string.
+	 * @return
+	 */
+	private String prepareSecurityToken() {
+		int time = ((int) System.currentTimeMillis() % SECURITY_TOKEN_TIMESTAMP_RANGE);
+		return String.valueOf(time + (new Random().nextLong() - SECURITY_TOKEN_TIMESTAMP_RANGE));
 	}
 
 	/**

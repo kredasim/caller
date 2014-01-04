@@ -24,12 +24,15 @@ public class CallController {
 	@Autowired
 	private CallService callService;
 	
-	@RequestMapping(value = "/{id}")
-	public @ResponseBody Response getCallInformation(@PathVariable String id) {
+	@RequestMapping(value = "/{id}/{securityToken}")
+	public @ResponseBody Response getCallInformation(@PathVariable String id, 
+			@PathVariable String securityToken) {
 		Long callId = Long.parseLong(id);
 		Call call = callService.getCall(callId);
-		
-		return prepareCallResponse(call);
+		if (call.getSecurityToken().equals(securityToken)) {
+			return prepareCallResponse(call);
+		}
+		return new Response();
 	}
 
 	/**
