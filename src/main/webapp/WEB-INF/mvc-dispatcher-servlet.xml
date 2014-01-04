@@ -28,7 +28,9 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
-
+	
+	<context:property-placeholder/>
+	
 	<!-- DB configuration -->
 	<bean id="propertyPlaceholderConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -46,9 +48,12 @@
 		<property name="placeholderSuffix" value="}" />
 	</bean>
 
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
-		destroy-method="close" p:driverClassName="$db{jdbc.driverClassName}"
-		p:url="$db{jdbc.databaseurl}" p:username="$db{jdbc.username}"
+	<bean id="dataSource" 
+		class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close" 
+		p:driverClassName="$db{jdbc.driverClassName}"
+		p:url="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}" 
+		p:username="$db{jdbc.username}"
 		p:password="$db{jdbc.password}" />
 
 	<bean id="sessionFactory"
