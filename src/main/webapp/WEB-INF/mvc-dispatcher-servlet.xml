@@ -31,30 +31,13 @@
 	
 	<context:property-placeholder/>
 	
-	<!-- DB configuration -->
-	<bean id="propertyPlaceholderConfigurer"
-		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations">
-			<list>
-				<value>
-					classpath:jdbc.properties
-				</value>
-			</list>
-		</property>
-		<!-- This is to differentiate the this PropertyPlaceholderConfigurer with 
-			other property place holder which has default placeholderPrefix value ${}.This 
-			is issue with spring. See this . -->
-		<property name="placeholderPrefix" value="$db{" />
-		<property name="placeholderSuffix" value="}" />
-	</bean>
-
 	<bean id="dataSource" 
 		class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close" 
-		p:driverClassName="$db{jdbc.driverClassName}"
+		p:driverClassName="com.mysql.jdbc.Driver"
 		p:url="jdbc:mysql://${OPENSHIFT_MYSQL_DB_HOST}:${OPENSHIFT_MYSQL_DB_PORT}/${OPENSHIFT_APP_NAME}" 
-		p:username="$db{jdbc.username}"
-		p:password="$db{jdbc.password}" />
+		p:username="admin5bkT5bV"
+		p:password="yAfIWqwqmADz" />
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -65,7 +48,7 @@
 		<!-- Do not add hibernate properties from hibernate.cfg.xml here -->
 		<property name="hibernateProperties">
 			<props>
-				<prop key="hibernate.dialect">$db{jdbc.dialect}</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 			</props>
 		</property>
 	</bean>
