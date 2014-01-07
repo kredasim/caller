@@ -85,7 +85,7 @@ public class CallServiceImpl implements CallService {
 			conferenceCall.setToNumber(number);
 			conferenceCallDao.save(conferenceCall);
 			
-			makeSingleCall(number, conferenceCall, "http://caller-simeonkredatus.rhcloud.com/conferenceCall");
+			makeSingleCall(number, conferenceCall, "http://caller-simeonkredatus.rhcloud.com/conference/");
 		}
 	}
 
