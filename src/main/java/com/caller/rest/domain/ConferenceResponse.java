@@ -12,8 +12,11 @@ public class ConferenceResponse {
 	}
 	
 	public ConferenceResponse(String coneferenceRoom) {
+		Conference conference = new Conference();
+		conference.setWaitUrl("http://twimlets.com/holdmusic?Bucket=com.twilio.music.ambient");
+		conference.setValue(coneferenceRoom);
 		dial = new Dial();
-		dial.setConference(coneferenceRoom);
+		dial.setConference(conference);
 	}
 
 	public Dial getDial() {

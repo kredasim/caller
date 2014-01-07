@@ -1,16 +1,14 @@
 package com.caller.rest.domain;
 
-
 public class Dial {
 
-	private String conference;
+	private Conference conference;
 
-	public String getConference() {
+	public Conference getConference() {
 		return conference;
 	}
 
-	public void setConference(String conference) {
+	public void setConference(Conference conference) {
 		this.conference = conference;
 	}
-	
 }
