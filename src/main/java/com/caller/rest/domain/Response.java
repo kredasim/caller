@@ -31,6 +31,7 @@ public class Response {
 	public String getDial() {
 		return Dial;
 	}
+	@XmlElement(name = "Dial")
 	public void setDial(String dial) {
 		Dial = dial;
 	}
