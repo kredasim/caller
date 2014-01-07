@@ -3,7 +3,7 @@ package com.caller.dao;
 import java.util.List;
 
 /**
- * Parent interface for all dao interfaces dealing with doli's model.
+ * Parent interface for all dao interfaces dealing with model objects.
  * @author SKR
  *
  */

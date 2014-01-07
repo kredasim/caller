@@ -10,8 +10,6 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public class AbstractEntity<PK extends Serializable> {
 
-    public static final String GENERATOR = "customSequence";
-    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private PK id;

@@ -4,11 +4,7 @@
 package com.caller.model;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 /**
  * @author Simeon Kredatus
@@ -22,10 +18,6 @@ public class Call extends AbstractEntity<Long> {
 	private String toNumber;
 	private String securityToken;
 	
-//	@OneToOne(fetch = FetchType.EAGER)
-//	@PrimaryKeyJoinColumn
-//	@Transient
-//	private User originator;
 	private String messageText;
 
 	/**
@@ -77,8 +69,4 @@ public class Call extends AbstractEntity<Long> {
 	public void setSecurityToken(String securityToken) {
 		this.securityToken = securityToken;
 	}
-	
-	
-	
-
 }
