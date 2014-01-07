@@ -40,7 +40,7 @@ public class CallServiceImpl implements CallService {
 	
 	private static final int SECURITY_TOKEN_TIMESTAMP_RANGE = 2000000;
 	
-	private static final String DEFAULT_FROM_NUMBER = "17242095219";
+	private static final String DEFAULT_FROM_NUMBER = "+17242095219";
 	
 	/**
 	 * {@inheritDoc}
