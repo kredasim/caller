@@ -1,5 +1,6 @@
 package com.caller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,7 @@ import com.caller.service.CallService;
 @RequestMapping("/conference")
 public class ConferenceController {
 
+	@Autowired
 	private CallService callService;
 	
 	@RequestMapping(value = "/{id}/{securityToken}")
