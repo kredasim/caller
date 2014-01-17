@@ -1,13 +1,28 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<html>
-<body>
+<%@ include file="./templateCommon1.jsp"%>
 
+<div class="centerAlignDiv">
 	<form:form action="./register" method="POST" modelAttribute="user">
-		<form:input path="name" />
-		<form:input path="number" />
-		<form:password path="password" />
-		<input type="submit" value="Register" />
+		<table>
+			<tr>
+				<td>Name:</td>
+				<td><form:input path="name" /> </td>
+			</tr>
+
+			<tr>
+				<td>Phone number:</td>
+				<td><form:input path="number" /> </td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><form:password path="password" /></td>
+			</tr>
+			
+			<tr>
+				<td colspan="2">
+					<input type="submit" value="Register" />
+				</td>
+			</tr>
+		</table>
 	</form:form>
-</body>
-</html>
+</div>
+<%@ include file="./templateCommon2.jsp"%>

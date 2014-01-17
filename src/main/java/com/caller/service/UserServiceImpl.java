@@ -3,11 +3,13 @@
  */
 package com.caller.service;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import org.apache.commons.codec.binary.Hex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,9 +42,27 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void registerUser(User user) {
 		user.setVerified(false);
+		String hashedPassword = getHashedPassword(user.getPassword());
+		user.setPassword(hashedPassword);
 		user.setVerificationCode(String.valueOf(System.currentTimeMillis())
 				+ new Random().nextInt());
 		userDao.save(user);
+	}
+	
+	/**
+	 * Returns hashed password via SHA-512.
+	 * @param user
+	 * @return
+	 */
+	private String getHashedPassword(String openPassword) {
+		MessageDigest sha = null;
+		try {
+			sha = MessageDigest.getInstance("SHA-512");
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		byte[] data = sha.digest(openPassword.getBytes());
+		return new String(Hex.encodeHex(data));
 	}
 
 	/**
@@ -50,6 +70,7 @@ public class UserServiceImpl implements UserService {
 	 */
 	@Override
 	public boolean authenticate(String userName, String password) {
+		password = getHashedPassword(password);
 		if (userName == null || password == null) {
 			return false;
 		}
