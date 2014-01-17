@@ -12,9 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.caller.dao.CallDao;
-import com.caller.dao.ConferenceCallDao;
 import com.caller.model.Call;
-import com.caller.model.ConferenceCall;
 import com.twilio.sdk.TwilioRestClient;
 import com.twilio.sdk.TwilioRestException;
 import com.twilio.sdk.resource.factory.CallFactory;
@@ -33,10 +31,6 @@ public class CallServiceImpl implements CallService {
 	
 	@Autowired
 	private CallDao callDao;
-	
-	@Autowired
-	private ConferenceCallDao conferenceCallDao;
-	
 	
 	private static final int SECURITY_TOKEN_TIMESTAMP_RANGE = 2000000;
 	
@@ -75,20 +69,6 @@ public class CallServiceImpl implements CallService {
 		return callDao.find(id);
 	}
 
-	@Override
-	public void makeConferenceCall(String userName, String[] numbers, String conferenceRoom) {
-		for (String number : numbers) { 
-			ConferenceCall conferenceCall = new ConferenceCall();
-			conferenceCall.setConferenceRoom(conferenceRoom);
-			conferenceCall.setFromNumber(DEFAULT_FROM_NUMBER);
-			conferenceCall.setSecurityToken(prepareSecurityToken());
-			conferenceCall.setToNumber(number);
-			conferenceCallDao.save(conferenceCall);
-			
-			makeSingleCall(number, conferenceCall, "http://caller-simeonkredatus.rhcloud.com/conference/");
-		}
-	}
-
 	private void makeSingleCall(String number, Call call, String postBackUrl) {
 		TwilioRestClient client = new TwilioRestClient(UserServiceImpl.ACCOUNT_SID, UserServiceImpl.AUTH_TOKEN);
 		Account acct = client.getAccount();
@@ -109,10 +89,4 @@ public class CallServiceImpl implements CallService {
 		    e.printStackTrace();
 		}
 	}
-
-	@Override
-	public ConferenceCall getConferenceCall(Long id) {
-		return conferenceCallDao.find(id);
-	}
-
 }

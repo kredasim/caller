@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "Response")
 public class Response {
 	private String Say;
-	private String Dial;
+//	private String Dial;
 	
 	/**
 	 * @return the say
@@ -28,11 +28,11 @@ public class Response {
 	public void setSay(String say) {
 		Say = say;
 	}
-	public String getDial() {
-		return Dial;
-	}
-	@XmlElement(name = "Dial")
-	public void setDial(String dial) {
-		Dial = dial;
-	}
+//	public String getDial() {
+//		return Dial;
+//	}
+//	@XmlElement(name = "Dial")
+//	public void setDial(String dial) {
+//		Dial = dial;
+//	}
 }

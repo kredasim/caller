@@ -25,8 +25,6 @@
         
         <mapping class="com.caller.model.User" />
         <mapping class="com.caller.model.Call" />
-        <mapping class="com.caller.model.ConferenceCall" />
-        
     </session-factory>
 
 </hibernate-configuration>

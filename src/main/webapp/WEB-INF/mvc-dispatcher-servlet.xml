@@ -64,7 +64,6 @@
 			<property name="classesToBeBound">
 				<list>
 					<value>com.caller.rest.domain.Response</value>
-					<value>com.caller.rest.domain.ConferenceResponse</value>
 				</list>
 			</property>
 		  </bean>

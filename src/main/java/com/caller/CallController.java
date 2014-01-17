@@ -42,7 +42,6 @@ public class CallController {
 	private Response prepareCallResponse(Call call) {
 		Response response = new Response();
 		response.setSay(call.getMessageText());
-		response.setDial("+421903454096");
 		return response;
 	}
 }

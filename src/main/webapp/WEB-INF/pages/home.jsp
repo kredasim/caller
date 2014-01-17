@@ -22,11 +22,5 @@
  		<input type="text" name="text" />
  		<input type="submit" name="makeCall"/>
  	</form>	
- 	
- 	<form action="./welcome" method="POST">
- 		<input type="text" name="numbers" />
- 		<input type="text" name="conferenceRoomName" />
- 		<input type="submit" name="makeConferenceCall" />
- 	</form>
 </body>
 </html>

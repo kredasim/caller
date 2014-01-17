@@ -61,16 +61,6 @@ public class WelcomeController {
 		callService.makeCall(name, toNumber, text);
 		return "redirect:welcome";
 	}
-	
-	@RequestMapping(value = "/welcome", method = RequestMethod.POST, params = "makeConferenceCall")
-	public String makeConferenceCall(@RequestParam("numbers") String numbers, 
-			@RequestParam("conferenceRoomName") String conferenceRoomName) {
-		String[] splittedNumbers = numbers.split(",");
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String name = auth.getName();
-		callService.makeConferenceCall(name, splittedNumbers, conferenceRoomName);
-		return "redirect:welcome";
-	}
  
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
