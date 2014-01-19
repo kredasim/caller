@@ -4,41 +4,8 @@
 <html>
 
 <head>
-<style>
-.roundedRectangle {
-	border: 2px solid #a1a1a1;
-	padding: 10px 40px;
-	background: #00BFFF;
-	width: 550px;
-	height: 325px;
-	border-radius: 25px;
-	positon: absolute;
-	margin-left: 30%;
-	margin-top: 10%;
-	
-}
-
-.logoutLink {
-	float: right;
-}
-
-.errorblock {
-	color: #ff0000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
-}
-
-.centerAlignDiv {
-	margin-top: 20%;
-	margin-left: 20%;
-}
-
-fieldset {
-	border: 0;
-}
-</style>
+	<link rel="stylesheet" href="css/caller.css" media="screen">
+	<style>body{background:url(images/bg.png) center;margin: 0 auto;width: 960px;padding-top: 50px}.footer{margin-top:50px;text-align:center;color:#666;font:bold 14px Arial}.footer a{color:#999;text-decoration:none}.login-form{margin: 50px auto;}</style>
 </head>
 <body>
-	<div class="roundedRectangle">
+	<div class="login-form">
