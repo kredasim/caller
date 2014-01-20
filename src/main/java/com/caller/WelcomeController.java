@@ -25,6 +25,12 @@ public class WelcomeController {
 	@Autowired
 	private CallService callService;
 	
+	@RequestMapping(value="/index.html", method = RequestMethod.GET)
+	public String getIndexPage() {
+		return "login";
+ 
+	}
+	
 	@RequestMapping(value="/welcome", method = RequestMethod.GET)
 	public String printWelcome(ModelMap model, Principal principal ) {
  
