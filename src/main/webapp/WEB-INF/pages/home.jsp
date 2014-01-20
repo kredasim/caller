@@ -1,7 +1,7 @@
 <%@include file="./templateCommon1.jsp" %>
 
 	<a href="<c:url value="/j_spring_security_logout" />" class="logoutLink">Logout</a>
-	<fieldset>
+	<fieldset class="label">
 		<legend>Profile</legend>
 		Username : ${username}
 		</br>
@@ -9,20 +9,33 @@
 		
 	</fieldset>
 
-	<fieldset>
+	<fieldset class="label" style="float: left;">
 		<legend>Profile activation</legend>
 		<form action="./welcome" method="POST">
-			<input type="submit" name="sendActivationCode" value="Send activation code!"/>
+			<input type="submit" name="sendActivationCode" value="Send activation code!" style="float: left;"/>
 		</form>
+		</br>
 		
 		<form action="./welcome" method="POST">
-		Enter activation number:
-		<input type="text" name="activationNumber" />
-		 <input type="submit" name="activate" value="Activate profile!" />
+		<table>
+			<tr>
+				<td class="label">
+					Enter activation code:
+				</td>
+				<td>
+					<input type="text" name="activationNumber" />
+				</td>
+				<td>
+				 	<input type="submit" name="activate" value="Activate profile!" />				
+				</td>
+			</tr>
+		 </table>
 		</form>
 	</fieldset>
 
-	<fieldset <c:if test="${verified == false}">disabled</c:if> >
+	<fieldset <c:if test="${verified == false}">class="disabled" disabled</c:if> 
+				<c:if test="${verified == true}">class="label"</c:if> 
+	>
 		<legend>Call to number:</legend>
 		<form action="./welcome" method="POST">
 			Number to call:

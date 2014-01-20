@@ -33,7 +33,11 @@ public class WelcomeController {
 		model.addAttribute("message", "Spring Security Custom Form example");
 		model.addAttribute("verified", userService.isUserActivated(name));
 		return "home";
- 
+	}
+	
+	@RequestMapping(value="/about", method = RequestMethod.GET)
+	public String getAboutPage() {
+		return "about";
 	}
 	
 	@RequestMapping(value = "/welcome", method = RequestMethod.POST, params = "sendActivationCode")

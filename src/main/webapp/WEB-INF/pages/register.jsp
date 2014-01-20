@@ -4,16 +4,16 @@
 	<form:form action="./register" method="POST" modelAttribute="user">
 		<table>
 			<tr>
-				<td>Name:</td>
+				<td class="label">Name:</td>
 				<td><form:input path="name" /> </td>
 			</tr>
 
 			<tr>
-				<td>Phone number:</td>
+				<td class="label">Phone number:</td>
 				<td><form:input path="number" /> </td>
 			</tr>
 			<tr>
-				<td>Password:</td>
+				<td class="label">Password:</td>
 				<td><form:password path="password" /></td>
 			</tr>
 			

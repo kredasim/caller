@@ -1,7 +1,15 @@
+.disabled {
+	color: gray;
+}
 .label {
 	color: white;
 }
-
+fieldset {
+	border: 0;	
+}
+.errorblock {
+	color: red;	
+} 
 .login-form,
 .login-form h1,
 .login-form span,
@@ -12,12 +20,17 @@
 	border: 0;
 	outline: 0;
 }
+.login-form a {
+	float: right;
+	color: white;
+	margin-left: 10px;
+}
 
 /* Form Container */
 .login-form {
 	position: relative;
-	width: 550px;
-	height: 250px;
+	width: 600px;
+	height: 400px;
 	padding: 15px 25px 0 25px;
 	margin-top: 15px;
 	cursor: default;
